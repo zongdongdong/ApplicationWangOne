@@ -8,9 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.uni.applicationwangone.R;
+import com.uni.applicationwangone.ui.activity.MainActivity;
+import com.uni.applicationwangone.ui.util.RemainingCountUpTimer;
 
 /**
  * 差动保护，数值型定值，菜单(整定)
@@ -20,6 +23,7 @@ public class ShuZhiXingDingZhiFragment extends BaseFragment {
     private static final String ARG_PARAM2 = "param2";
 
     private View mRootView;
+    private LinearLayout llPagerOne,llPagerTwo,llPagerThree;
     private LinearLayout llOne,llTwo,llThree,llFour;
     private TextView txtvOne,txtvTwo,txtvThree,txtvFour,txtvFive,txtvSix,txtvSeven,txtvEight;
     private LinearLayout[] rowView;
@@ -27,6 +31,16 @@ public class ShuZhiXingDingZhiFragment extends BaseFragment {
     private int index = 0;
     private int rowIndex = 0;
     private int valueIndex = -1;
+
+    private TextView txtvLeft,txtvMiddle,txtvRight;
+    private TextView[] dialogButton;
+    private int dialogButtonIndex = 0;
+
+    private ProgressBar progressbar;
+    private TextView txtvProgress;
+    private RemainingCountUpTimer timer;
+
+
 
     public static ShuZhiXingDingZhiFragment newInstance() {
         ShuZhiXingDingZhiFragment fragment = new ShuZhiXingDingZhiFragment();
@@ -45,6 +59,10 @@ public class ShuZhiXingDingZhiFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_shu_zhi_xing_ding_zhi, container, false);
+        llPagerOne = (LinearLayout)mRootView.findViewById(R.id.llPagerOne);
+        llPagerTwo = (LinearLayout)mRootView.findViewById(R.id.llPagerTwo);
+        llPagerThree = (LinearLayout)mRootView.findViewById(R.id.llPagerThree);
+
         llOne = (LinearLayout)mRootView.findViewById(R.id.llOne);
         llOne.setSelected(true);
         txtvOne = (TextView)mRootView.findViewById(R.id.txtvOne);
@@ -73,6 +91,15 @@ public class ShuZhiXingDingZhiFragment extends BaseFragment {
         txtvSix.setSelected(false);
         txtvSeven.setSelected(false);
         txtvEight.setSelected(false);
+
+        txtvLeft = (TextView)mRootView.findViewById(R.id.txtvLeft);//取消整定
+        txtvMiddle = (TextView)mRootView.findViewById(R.id.txtvMiddle);//下装整定
+        txtvRight = (TextView)mRootView.findViewById(R.id.txtvRight);//重新整定
+        dialogButton = new TextView[]{txtvLeft,txtvMiddle,txtvRight};
+
+        progressbar = (ProgressBar)mRootView.findViewById(R.id.progressbar);
+        txtvProgress = (TextView)mRootView.findViewById(R.id.txtvProgress);
+
         setViews();
         return mRootView;
     }
@@ -80,7 +107,6 @@ public class ShuZhiXingDingZhiFragment extends BaseFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-//        refreshStyle();
     }
 
 
@@ -99,121 +125,177 @@ public class ShuZhiXingDingZhiFragment extends BaseFragment {
     @Override
     public void top() {
         super.top();
-        if(valueIndex==-1){//上下选择行
-            rowView[rowIndex].setSelected(false);
-            if(rowIndex==0){
-                rowIndex=3;
-            }else {
-                rowIndex--;
+        if(llPagerOne.getVisibility() == View.VISIBLE){
+            if(valueIndex==-1){//上下选择行
+                rowView[rowIndex].setSelected(false);
+                if(rowIndex==0){
+                    rowIndex=3;
+                }else {
+                    rowIndex--;
+                }
+                rowView[rowIndex].setSelected(true);
+                valueView[rowIndex][0].setSelected(false);
+                valueView[rowIndex][1].setSelected(false);
+            }else{//修改值
+                if(valueIndex==0){
+                    index = rowIndex + rowIndex;
+                }else{
+                    index = rowIndex + rowIndex + 1;
+                }
+                changeValue(true);
             }
-            rowView[rowIndex].setSelected(true);
-            valueView[rowIndex][0].setSelected(false);
-            valueView[rowIndex][1].setSelected(false);
-        }else{//修改值
-            if(valueIndex==0){
-                index = rowIndex + rowIndex;
-            }else{
-                index = rowIndex + rowIndex + 1;
-            }
-            changeValue(true);
+        }else if(llPagerTwo.getVisibility() == View.VISIBLE){
+
         }
+
     }
 
     @Override
     public void bottom() {
         super.bottom();
-        if(valueIndex==-1){//上下选择行
-            rowView[rowIndex].setSelected(false);
-            if(rowIndex==3){
-                rowIndex=0;
-            }else {
-                rowIndex++;
+        if(llPagerOne.getVisibility() == View.VISIBLE){
+            if(valueIndex==-1){//上下选择行
+                rowView[rowIndex].setSelected(false);
+                if(rowIndex==3){
+                    rowIndex=0;
+                }else {
+                    rowIndex++;
+                }
+                rowView[rowIndex].setSelected(true);
+                valueView[rowIndex][0].setSelected(false);
+                valueView[rowIndex][1].setSelected(false);
+            }else{//修改值
+                if(valueIndex==0){
+                    index = rowIndex + rowIndex;
+                }else{
+                    index = rowIndex + rowIndex + 1;
+                }
+                changeValue(false);
             }
-            rowView[rowIndex].setSelected(true);
-            valueView[rowIndex][0].setSelected(false);
-            valueView[rowIndex][1].setSelected(false);
-        }else{//修改值
-            if(valueIndex==0){
-                index = rowIndex + rowIndex;
-            }else{
-                index = rowIndex + rowIndex + 1;
-            }
-            changeValue(false);
+        }else if(llPagerTwo.getVisibility() == View.VISIBLE){
+
         }
+
     }
 
     @Override
     public void left() {
         super.left();
-        //左右选择值
-        if(valueIndex!=-1){
-            if(valueIndex==0){
-                valueView[rowIndex][valueIndex].setSelected(false);
-                valueIndex++;
-                valueView[rowIndex][valueIndex].setSelected(true);
-            }else{
-                valueView[rowIndex][valueIndex].setSelected(false);
-                valueIndex--;
-                valueView[rowIndex][valueIndex].setSelected(true);
+        if(llPagerOne.getVisibility() == View.VISIBLE){
+            //左右选择值
+            if(valueIndex!=-1){
+                if(valueIndex==0){
+                    valueView[rowIndex][valueIndex].setSelected(false);
+                    valueIndex++;
+                    valueView[rowIndex][valueIndex].setSelected(true);
+                }else{
+                    valueView[rowIndex][valueIndex].setSelected(false);
+                    valueIndex--;
+                    valueView[rowIndex][valueIndex].setSelected(true);
+                }
             }
+        }else if(llPagerTwo.getVisibility() == View.VISIBLE){
+            dialogButton[dialogButtonIndex].setSelected(false);
+            if(dialogButtonIndex==0){
+                dialogButtonIndex = 3;
+            }else{
+                dialogButtonIndex--;
+            }
+            dialogButton[dialogButtonIndex].setSelected(true);
         }
+
     }
 
     @Override
     public void right() {
         super.right();
-        //左右选择值
-        if(valueIndex!=-1){
-            if(valueIndex==0){
-                valueView[rowIndex][valueIndex].setSelected(false);
-                valueIndex++;
-                valueView[rowIndex][valueIndex].setSelected(true);
-            }else{
-                valueView[rowIndex][valueIndex].setSelected(false);
-                valueIndex--;
-                valueView[rowIndex][valueIndex].setSelected(true);
+        if(llPagerOne.getVisibility() == View.VISIBLE){
+            //左右选择值
+            if(valueIndex!=-1){
+                if(valueIndex==0){
+                    valueView[rowIndex][valueIndex].setSelected(false);
+                    valueIndex++;
+                    valueView[rowIndex][valueIndex].setSelected(true);
+                }else{
+                    valueView[rowIndex][valueIndex].setSelected(false);
+                    valueIndex--;
+                    valueView[rowIndex][valueIndex].setSelected(true);
+                }
             }
+        }else if(llPagerTwo.getVisibility() == View.VISIBLE){
+            dialogButton[dialogButtonIndex].setSelected(false);
+            if(dialogButtonIndex==2){
+                dialogButtonIndex = 0;
+            }else{
+                dialogButtonIndex++;
+            }
+            dialogButton[dialogButtonIndex].setSelected(true);
         }
+
     }
 
 
 
     @Override
     public boolean cancel() {
-        if(valueIndex!=-1){
-            valueIndex = -1;
-            rowView[rowIndex].setSelected(true);
-            valueView[rowIndex][0].setSelected(false);
-            valueView[rowIndex][1].setSelected(false);
+        if(llPagerOne.getVisibility() == View.VISIBLE){
+            if(valueIndex!=-1){
+                valueIndex = -1;
+                rowView[rowIndex].setSelected(true);
+                valueView[rowIndex][0].setSelected(false);
+                valueView[rowIndex][1].setSelected(false);
+            }else{
+                llPagerOne.setVisibility(View.GONE);
+                llPagerTwo.setVisibility(View.VISIBLE);
+                dialogButtonIndex = 0;
+                dialogButton[0].setSelected(true);
+                dialogButton[1].setSelected(false);
+                dialogButton[2].setSelected(false);
+            }
+        }else if(llPagerTwo.getVisibility() == View.VISIBLE){
+
         }
         return super.cancel();
     }
 
     @Override
     public boolean confirm() {
-        if(valueIndex==-1){
-            valueIndex = 0;
-            rowView[rowIndex].setSelected(false);
-            valueView[rowIndex][valueIndex].setSelected(true);
-            valueView[rowIndex][1].setSelected(false);
+        if(llPagerOne.getVisibility() == View.VISIBLE){
+            if(valueIndex==-1){
+                valueIndex = 0;
+                rowView[rowIndex].setSelected(false);
+                valueView[rowIndex][valueIndex].setSelected(true);
+                valueView[rowIndex][1].setSelected(false);
+            }
+        }else if(llPagerTwo.getVisibility() == View.VISIBLE){
+            switch (dialogButtonIndex){
+                case 0://取消整定
+                    if(getActivity()!=null){
+                        ((MainActivity)getActivity()).closeFragment();
+                    }
+                    break;
+                case 1://下装整定
+                    llPagerOne.setVisibility(View.GONE);
+                    llPagerTwo.setVisibility(View.GONE);
+                    llPagerThree.setVisibility(View.VISIBLE);
+                    timer = new RemainingCountUpTimer(1500, progressbar, txtvProgress,new Runnable() {
+                        @Override
+                        public void run() {
+                            if(getActivity()!=null){
+                                ((MainActivity)getActivity()).closeFragment();
+                            }
+                        }
+                    });
+                    timer.start();
+                    break;
+                case 2://重新整定
+                    llPagerOne.setVisibility(View.VISIBLE);
+                    llPagerTwo.setVisibility(View.GONE);
+                    break;
+            }
+
         }
         return super.confirm();
-    }
-
-
-
-    public synchronized void leftOrRight(boolean isLeft){
-        if(isLeft){
-            if(index != 0){
-                index--;
-                refreshStyle();
-            }
-        }else{
-            if(index != 7){
-                index++;
-                refreshStyle();
-            }
-        }
     }
 
     public synchronized void changeValue(boolean isTop){
@@ -310,44 +392,6 @@ public class ShuZhiXingDingZhiFragment extends BaseFragment {
                     view.setText(value1+"");
                 }
             }
-        }
-    }
-
-    public void refreshStyle(){
-        txtvOne.setSelected(false);
-        txtvTwo.setSelected(false);
-        txtvThree.setSelected(false);
-        txtvFour.setSelected(false);
-        txtvFive.setSelected(false);
-        txtvSix.setSelected(false);
-        txtvSeven.setSelected(false);
-        txtvEight.setSelected(false);
-        switch (index){
-            case 0:
-                txtvOne.setSelected(true);
-                break;
-            case 1:
-                txtvTwo.setSelected(true);
-                break;
-            case 2:
-                txtvThree.setSelected(true);
-                break;
-            case 3:
-                txtvFour.setSelected(true);
-                break;
-            case 4:
-                txtvFive.setSelected(true);
-                break;
-            case 5:
-                txtvSix.setSelected(true);
-                break;
-            case 6:
-                txtvSeven.setSelected(true);
-                break;
-            case 7:
-                txtvEight.setSelected(true);
-                break;
-
         }
     }
 }

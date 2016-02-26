@@ -524,4 +524,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         }
         return levelText;
     }
+
+    public void closeFragment(){
+        removeFragment();
+    }
 }

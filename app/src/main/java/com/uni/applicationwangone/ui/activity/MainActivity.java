@@ -128,7 +128,15 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 break;
             case R.id.btnCancel:
                 if(baseFragment != null){
-                    removeFragment();
+                    String clsName = baseFragment.getClass().getSimpleName();
+                    switch (clsName){
+                        case "ShuZhiXingDingZhiFragment":
+                            baseFragment.cancel();
+                            break;
+                        default:
+                            removeFragment();
+                            break;
+                    }
                 }else if(ThirdLevelMenuIndex != -1){
                     if(thirdLevelPop!=null){
                         thirdLevelPop.dismiss();
@@ -405,7 +413,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 ((TwoButtonDialogFragment)baseFragment).leftOrRight(isLeft);
                 break;
             case "ShuZhiXingDingZhiFragment":
-                ((ShuZhiXingDingZhiFragment)baseFragment).leftOrRight(isLeft);
+//                ((ShuZhiXingDingZhiFragment)baseFragment).leftOrRight(isLeft);
+                if(isLeft){
+                    baseFragment.left();
+                }else{
+                    baseFragment.right();
+                }
                 break;
         }
     }
@@ -430,7 +443,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 ((SettingViewPagerFragment)baseFragment).topOrBottom(isTop);
                 break;
             case "ShuZhiXingDingZhiFragment":
-                ((ShuZhiXingDingZhiFragment)baseFragment).topOrBottom(isTop);
+//                ((ShuZhiXingDingZhiFragment)baseFragment).topOrBottom(isTop);
+                if(isTop){
+                    baseFragment.top();
+                }else{
+                    baseFragment.bottom();
+                }
                 break;
         }
     }
@@ -455,14 +473,14 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 setFragment();
                 break;
             case "ShuZhiXingDingZhiFragment":
-                baseFragment = mDataProvider.getFragment(getCurrentLevelText()+"修改确认",MenuIndex);
-                setFragment();
+//                baseFragment = mDataProvider.getFragment(getCurrentLevelText()+"修改确认",MenuIndex);
+//                setFragment();
+                baseFragment.confirm();
                 break;
             case "NetPortSettingFragment":
                 baseFragment = mDataProvider.getFragment(getCurrentLevelText()+"修改确认",MenuIndex);
                 setFragment();
                 break;
-
         }
     }
 

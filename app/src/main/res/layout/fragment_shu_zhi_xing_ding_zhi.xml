@@ -27,32 +27,41 @@
             android:layout_marginLeft="20dp"
             android:text="纵差差动速断电流定值"
             />
-        <TextView
-            android:id="@+id/txtvOne"
+        <LinearLayout
+            android:id="@+id/llOne"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="008"
+            android:orientation="horizontal"
+            android:padding="2dp"
             android:layout_marginLeft="10dp"
-            android:textColor="@color/white"
             android:background="@drawable/white_box"
-            android:padding="2dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="."
-            android:padding="2dp"
-            android:textColor="@color/white"
-            />
-        <TextView
-            android:id="@+id/txtvTwo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="00"
-            android:textColor="@color/white"
-            android:background="@drawable/white_box"
-            android:padding="2dp"
-            />
+            >
+            <TextView
+                android:id="@+id/txtvOne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="008"
+                android:textColor="@color/white"
+                android:background="@drawable/white_box"
+                android:padding="2dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="."
+                android:padding="2dp"
+                android:textColor="@color/white"
+                />
+            <TextView
+                android:id="@+id/txtvTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00"
+                android:textColor="@color/white"
+                android:background="@drawable/white_box"
+                android:padding="2dp"
+                />
+        </LinearLayout>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,32 +85,41 @@
             android:layout_marginLeft="20dp"
             android:text="纵差保护启动电流定值"
             />
-        <TextView
-            android:id="@+id/txtvThree"
+        <LinearLayout
+            android:id="@+id/llTwo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="000"
+            android:orientation="horizontal"
+            android:padding="2dp"
             android:layout_marginLeft="10dp"
-            android:textColor="@color/white"
             android:background="@drawable/white_box"
-            android:padding="2dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="."
-            android:padding="2dp"
-            android:textColor="@color/white"
-            />
-        <TextView
-            android:id="@+id/txtvFour"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="50"
-            android:textColor="@color/white"
-            android:background="@drawable/white_box"
-            android:padding="2dp"
-            />
+            >
+            <TextView
+                android:id="@+id/txtvThree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="000"
+                android:textColor="@color/white"
+                android:background="@drawable/white_box"
+                android:padding="2dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="."
+                android:padding="2dp"
+                android:textColor="@color/white"
+                />
+            <TextView
+                android:id="@+id/txtvFour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="50"
+                android:textColor="@color/white"
+                android:background="@drawable/white_box"
+                android:padding="2dp"
+                />
+        </LinearLayout>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -125,32 +143,41 @@
             android:layout_marginLeft="20dp"
             android:text="纵差二段折线比率制动系数"
             />
-        <TextView
-            android:id="@+id/txtvFive"
+        <LinearLayout
+            android:id="@+id/llThree"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
+            android:orientation="horizontal"
+            android:padding="2dp"
             android:layout_marginLeft="10dp"
-            android:textColor="@color/white"
             android:background="@drawable/white_box"
-            android:padding="2dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="."
-            android:padding="2dp"
-            android:textColor="@color/white"
-            />
-        <TextView
-            android:id="@+id/txtvSix"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="50"
-            android:textColor="@color/white"
-            android:background="@drawable/white_box"
-            android:padding="2dp"
-            />
+            >
+            <TextView
+                android:id="@+id/txtvFive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/white"
+                android:background="@drawable/white_box"
+                android:padding="2dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="."
+                android:padding="2dp"
+                android:textColor="@color/white"
+                />
+            <TextView
+                android:id="@+id/txtvSix"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="50"
+                android:textColor="@color/white"
+                android:background="@drawable/white_box"
+                android:padding="2dp"
+                />
+        </LinearLayout>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -174,32 +201,41 @@
             android:layout_marginLeft="20dp"
             android:text="二次谐波制动系数"
             />
-        <TextView
-            android:id="@+id/txtvSeven"
+        <LinearLayout
+            android:id="@+id/llFour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
+            android:orientation="horizontal"
+            android:padding="2dp"
             android:layout_marginLeft="10dp"
-            android:textColor="@color/white"
             android:background="@drawable/white_box"
-            android:padding="2dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="."
-            android:padding="2dp"
-            android:textColor="@color/white"
-            />
-        <TextView
-            android:id="@+id/txtvEight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="15"
-            android:textColor="@color/white"
-            android:background="@drawable/white_box"
-            android:padding="2dp"
-            />
+            >
+            <TextView
+                android:id="@+id/txtvSeven"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/white"
+                android:background="@drawable/white_box"
+                android:padding="2dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="."
+                android:padding="2dp"
+                android:textColor="@color/white"
+                />
+            <TextView
+                android:id="@+id/txtvEight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15"
+                android:textColor="@color/white"
+                android:background="@drawable/white_box"
+                android:padding="2dp"
+                />
+        </LinearLayout>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="变电站继电保护辅助系统"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="30dp"
+        android:textColor="@android:color/black"
+        />
+    <Button
+        android:id="@+id/btnConfig"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="保护装置仿真系统"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        />
+    <Button
+        android:id="@+id/btnReference"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="消缺参考系统"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        />
+
+    <Button
+        android:id="@+id/btnRead"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="说明书"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        />
+
+    <Button
+        android:id="@+id/btnMethod"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="后台操作攻略"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        />
+</LinearLayout>

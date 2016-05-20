@@ -4,4 +4,15 @@
     <drawable name="white">#fff</drawable>
     <drawable name="gray">#e2e0e0</drawable>
     <drawable name="light_black">#3e3e3e</drawable>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="gray">#e2e0e0</color>
+    <color name="dark_gray">#666</color>
+    <color name="green">#4ee24e</color>
+    <color name="white">#ffffff</color>
+    <color name="light_dart_gray">#b6b4b4</color>
+    <color name="gray_actionbar_bg">#edecec</color>
+    <color name="light_black">#3e3e3e</color>
+    <color name="light_dark_gray">#898787</color>
 </resources>

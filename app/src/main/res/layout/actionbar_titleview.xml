@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="@color/gray_actionbar_bg"
+    >
+    <TextView
+        android:id="@+id/txtvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="我是标题"
+        android:layout_centerInParent="true"
+        android:textSize="20sp"
+        android:textColor="@color/light_black"
+        />
+    <TextView
+        android:id="@+id/txtvLeft"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/icon_back_black"
+        android:layout_centerVertical="true"
+        android:padding="5dp"
+        />
+</RelativeLayout>

@@ -22,7 +22,7 @@ public class BaseActivityActivity extends FragmentActivity {
         if(isAnimation){
             transaction.setCustomAnimations( R.anim.slide_in_from_right, R.anim.slide_out_to_left, R.anim.slide_in_from_left,R.anim.slide_out_to_right);
         }
-        transaction.replace(R.id.container_frame, fragment,fragment.getClass().getSimpleName());
+        transaction.replace(R.id.container_frame, fragment, fragment.getClass().getSimpleName());
         if(isAddStack){
             transaction.addToBackStack(fragment.getClass().getSimpleName());
         }
@@ -31,6 +31,10 @@ public class BaseActivityActivity extends FragmentActivity {
 
     @Override
     public void onBackPressed() {
+        goBack();
+    }
+
+    public void goBack(){
         if(getSupportFragmentManager().getBackStackEntryCount()>1){
             getSupportFragmentManager().popBackStack();
         }else {

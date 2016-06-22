@@ -1,7 +1,6 @@
 package com.uni.applicationwangone.ui.NewFragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,13 +13,12 @@ import com.uni.applicationwangone.R;
 import com.uni.applicationwangone.data.OnRequestCallback;
 import com.uni.applicationwangone.data.model.ReferenceDataResponse;
 import com.uni.applicationwangone.ui.AppConstant;
-import com.uni.applicationwangone.ui.activity.BaseActivityActivity;
+import com.uni.applicationwangone.ui.activity.BaseActivity;
 import com.uni.applicationwangone.ui.activity.NewMainActivity;
 import com.uni.applicationwangone.ui.fragments.BaseFragment;
 import com.uni.applicationwangone.ui.util.JSONUtils;
 import com.uni.applicationwangone.ui.util.UIHelper;
 import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.StringCallback;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -71,7 +69,7 @@ public class ReferenceSystemFragment extends BaseFragment {
 
     @OnClick(R.id.txtvLeft)
     public void onClick(View view) {
-        ((BaseActivityActivity) getActivity()).onBackPressed();
+        ((BaseActivity) getActivity()).onBackPressed();
     }
 
     @OnClick(R.id.btnSearch)

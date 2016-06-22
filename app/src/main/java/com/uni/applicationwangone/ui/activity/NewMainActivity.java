@@ -1,10 +1,7 @@
 package com.uni.applicationwangone.ui.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
 
-import com.uni.applicationwangone.R;
 import com.uni.applicationwangone.data.model.ReferenceBean;
 import com.uni.applicationwangone.ui.NewFragment.BackendMethodFragment;
 import com.uni.applicationwangone.ui.NewFragment.NewMainFragment;
@@ -15,10 +12,7 @@ import com.uni.applicationwangone.ui.NewFragment.ReferenceSystemFragment;
 
 import java.util.ArrayList;
 
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
-public class NewMainActivity extends BaseActivityActivity {
+public class NewMainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.uni.applicationwangone.R;
 import com.uni.applicationwangone.data.model.ReferenceBean;
-import com.uni.applicationwangone.ui.activity.BaseActivityActivity;
+import com.uni.applicationwangone.ui.activity.BaseActivity;
 import com.uni.applicationwangone.ui.adapter.QXSearchResultAdapter;
 import com.uni.applicationwangone.ui.fragments.BaseFragment;
 
@@ -76,7 +76,7 @@ public class ReferenceSearchResultFragment extends BaseFragment {
 
     @OnClick(R.id.txtvLeft)
     public void onBack(View view) {
-        ((BaseActivityActivity) getActivity()).onBackPressed();
+        ((BaseActivity) getActivity()).onBackPressed();
     }
 
     @Override

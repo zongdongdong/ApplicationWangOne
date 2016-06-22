@@ -24,7 +24,7 @@ import com.uni.applicationwangone.data.model.SMSDataResponse;
 import com.uni.applicationwangone.data.model.SpinnerBean;
 import com.uni.applicationwangone.data.model.SpinnerDataResponse;
 import com.uni.applicationwangone.ui.AppConstant;
-import com.uni.applicationwangone.ui.activity.BaseActivityActivity;
+import com.uni.applicationwangone.ui.activity.BaseActivity;
 import com.uni.applicationwangone.ui.adapter.FileAdapter;
 import com.uni.applicationwangone.ui.adapter.SpinnerAdapter;
 import com.uni.applicationwangone.ui.fragments.BaseFragment;
@@ -138,7 +138,7 @@ public class ReadFragment extends BaseFragment {
 
     @OnClick(R.id.txtvLeft)
     public void onBack(View view) {
-        ((BaseActivityActivity) getActivity()).onBackPressed();
+        ((BaseActivity) getActivity()).onBackPressed();
     }
 
     @Override

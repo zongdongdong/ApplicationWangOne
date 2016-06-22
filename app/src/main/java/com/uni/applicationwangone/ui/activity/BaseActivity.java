@@ -9,7 +9,7 @@ import android.os.Bundle;
 
 import com.uni.applicationwangone.R;
 
-public class BaseActivityActivity extends FragmentActivity {
+public class BaseActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +23,18 @@ public class BaseActivityActivity extends FragmentActivity {
             transaction.setCustomAnimations( R.anim.slide_in_from_right, R.anim.slide_out_to_left, R.anim.slide_in_from_left,R.anim.slide_out_to_right);
         }
         transaction.replace(R.id.container_frame, fragment, fragment.getClass().getSimpleName());
+        if(isAddStack){
+            transaction.addToBackStack(fragment.getClass().getSimpleName());
+        }
+        transaction.commitAllowingStateLoss();
+    }
+
+    public void transformFragment(int containerId, Fragment fragment,boolean isAddStack, boolean isAnimation){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        if(isAnimation){
+            transaction.setCustomAnimations( R.anim.slide_in_from_right, R.anim.slide_out_to_left, R.anim.slide_in_from_left,R.anim.slide_out_to_right);
+        }
+        transaction.replace(containerId, fragment, fragment.getClass().getSimpleName());
         if(isAddStack){
             transaction.addToBackStack(fragment.getClass().getSimpleName());
         }

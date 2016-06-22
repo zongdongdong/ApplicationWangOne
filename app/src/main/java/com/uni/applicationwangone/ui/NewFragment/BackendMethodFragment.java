@@ -22,14 +22,11 @@ import com.uni.applicationwangone.R;
 import com.uni.applicationwangone.data.OnRequestCallback;
 import com.uni.applicationwangone.data.model.BackendCLBean;
 import com.uni.applicationwangone.data.model.BackendCLDataResponse;
-import com.uni.applicationwangone.data.model.SMSBean;
-import com.uni.applicationwangone.data.model.SMSDataResponse;
 import com.uni.applicationwangone.data.model.SpinnerBean;
 import com.uni.applicationwangone.data.model.SpinnerDataResponse;
 import com.uni.applicationwangone.ui.AppConstant;
-import com.uni.applicationwangone.ui.activity.BaseActivityActivity;
+import com.uni.applicationwangone.ui.activity.BaseActivity;
 import com.uni.applicationwangone.ui.adapter.BackendCLFileAdapter;
-import com.uni.applicationwangone.ui.adapter.FileAdapter;
 import com.uni.applicationwangone.ui.adapter.SpinnerAdapter;
 import com.uni.applicationwangone.ui.fragments.BaseFragment;
 import com.uni.applicationwangone.ui.util.JSONUtils;
@@ -143,7 +140,7 @@ public class BackendMethodFragment extends BaseFragment {
 
     @OnClick(R.id.txtvLeft)
     public void onBack(View view) {
-        ((BaseActivityActivity) getActivity()).onBackPressed();
+        ((BaseActivity) getActivity()).onBackPressed();
     }
 
     @Override

@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.uni.applicationwangone.R;
 import com.uni.applicationwangone.ui.activity.BaseActivity;
+import com.uni.applicationwangone.ui.activity.JzMainActivity;
 import com.uni.applicationwangone.ui.activity.MainActivity;
 import com.uni.applicationwangone.ui.fragments.BaseFragment;
 import com.uni.applicationwangone.ui.util.UIHelper;
@@ -59,11 +60,14 @@ public class ProtectionDeviceStytemFragment extends BaseFragment {
     }
 
 
-    @OnClick({R.id.btn1, R.id.btn2,R.id.btn3, R.id.btn4, R.id.btn5, R.id.btn6, R.id.btn7, R.id.btn8, R.id.btn9, R.id.btn10})
+    @OnClick({R.id.btn1, R.id.btn2,R.id.btn3, R.id.btn4, R.id.btn5, R.id.btn6, R.id.btn7, R.id.btn8, R.id.btn9, R.id.btn10, R.id.btn11})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn7:
                 goMainActivity();
+                break;
+            case R.id.btn11:
+                startActivity(new Intent(getActivity(), JzMainActivity.class));
                 break;
             default:
                 showEmptyMessage();

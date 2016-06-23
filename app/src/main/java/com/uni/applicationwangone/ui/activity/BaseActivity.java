@@ -3,11 +3,15 @@ package com.uni.applicationwangone.ui.activity;
 import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.uni.applicationwangone.R;
+import com.uni.applicationwangone.ui.fragments.BaseFragment;
+
+import java.util.List;
 
 public class BaseActivity extends FragmentActivity {
 
@@ -39,6 +43,17 @@ public class BaseActivity extends FragmentActivity {
             transaction.addToBackStack(fragment.getClass().getSimpleName());
         }
         transaction.commitAllowingStateLoss();
+    }
+
+
+    public BaseFragment getVisibleFragment(){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        List<Fragment> fragments = fragmentManager.getFragments();
+        for(Fragment fragment : fragments){
+            if(fragment != null && fragment.isVisible())
+                return (BaseFragment)fragment;
+        }
+        return null;
     }
 
     @Override

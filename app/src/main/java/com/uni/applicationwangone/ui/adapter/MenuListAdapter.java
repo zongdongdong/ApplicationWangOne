@@ -1,5 +1,6 @@
 package com.uni.applicationwangone.ui.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +21,10 @@ import butterknife.ButterKnife;
  * Email-joe.zong@xiaoniubang.com
  */
 public class MenuListAdapter extends BaseAdapter {
-    List<MenuInfo> listData = new ArrayList<>();
-
+    ArrayList<MenuInfo> listData = new ArrayList<>();
     int selectPosition = 0;
 
-    public void refresh(List<MenuInfo> ls){
+    public void refresh(ArrayList<MenuInfo> ls){
         if(ls == null){
             ls = new ArrayList<>();
         }
@@ -32,9 +32,15 @@ public class MenuListAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
-    public void checkItem(int i){
-        selectPosition = i;
-        notifyDataSetChanged();
+    public void selectItem(int i){
+        if(i<getCount()){
+            selectPosition = i;
+            notifyDataSetChanged();
+        }
+    }
+
+    public int getSelectPosition(){
+        return selectPosition;
     }
 
     @Override
@@ -44,7 +50,7 @@ public class MenuListAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return listData.get(position);
     }
 
     @Override
@@ -61,6 +67,13 @@ public class MenuListAdapter extends BaseAdapter {
             convertView.setTag(viewHolder);
         }else{
             viewHolder = (ViewHolder)convertView.getTag();
+        }
+        MenuInfo menuInfo = listData.get(position);
+        viewHolder.txtvMenu.setText((position+1)+"."+menuInfo.value);
+        if(selectPosition == position){
+            viewHolder.txtvMenu.setSelected(true);
+        }else{
+            viewHolder.txtvMenu.setSelected(false);
         }
         return convertView;
     }

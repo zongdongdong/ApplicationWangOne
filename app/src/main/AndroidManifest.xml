@@ -30,7 +30,9 @@
         <activity
             android:name=".ui.activity.BaseActivity"
             android:theme="@style/noActionBarTheme" />
-        <activity android:name=".ui.activity.JzMainActivity"></activity>
+        <activity android:name=".ui.activity.JzMainActivity"
+            android:screenOrientation="landscape"
+            ></activity>
     </application>
 
 </manifest>

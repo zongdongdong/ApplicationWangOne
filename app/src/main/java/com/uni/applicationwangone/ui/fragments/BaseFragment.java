@@ -46,4 +46,12 @@ public class BaseFragment extends Fragment implements HandlerListener {
     public void right() {
 
     }
+
+    public void goBack(){
+        if(getActivity().getSupportFragmentManager().getBackStackEntryCount()>1){
+            getActivity().getSupportFragmentManager().popBackStack();
+        }else {
+            getActivity().finish();
+        }
+    }
 }

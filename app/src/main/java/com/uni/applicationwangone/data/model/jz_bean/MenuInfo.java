@@ -8,9 +8,9 @@ import java.io.Serializable;
  */
 public class MenuInfo implements Serializable{
     public String value;
-    public boolean childIsMenu;
+    public int childIsMenu;
 
-    public MenuInfo(String value, boolean childIsMenu) {
+    public MenuInfo(String value, int childIsMenu) {
         this.value = value;
         this.childIsMenu = childIsMenu;
     }

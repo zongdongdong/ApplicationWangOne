@@ -15,6 +15,7 @@ public class ContentTextBean implements Serializable{
         this.gravity = gravity;
     }
 
-    public ContentTextBean() {
+    public ContentTextBean(String text) {
+        this.text = text;
     }
 }

@@ -37,9 +37,9 @@ public class JzMainActivity extends BaseActivity {
         list.add(new MenuInfo("调试操作",JzMenuMgr.Menu_List));
         list.add(new MenuInfo("定值设置",JzMenuMgr.Menu_List));
         list.add(new MenuInfo("装置打印",JzMenuMgr.Menu_List));
-        list.add(new MenuInfo("版本信息",JzMenuMgr.Menu_List));
-        list.add(new MenuInfo("时间设置",JzMenuMgr.Menu_List));
-        list.add(new MenuInfo("报告清除",JzMenuMgr.Menu_List));
+        list.add(new MenuInfo("版本信息",JzMenuMgr.Content_Text));
+        list.add(new MenuInfo("时间设置",JzMenuMgr.Content_Text));
+        list.add(new MenuInfo("报告清除",JzMenuMgr.Content_Tip));
         return list;
     }
 

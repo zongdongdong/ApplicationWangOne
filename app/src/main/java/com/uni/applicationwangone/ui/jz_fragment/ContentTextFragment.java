@@ -12,6 +12,8 @@ import com.uni.applicationwangone.data.JzMenuMgr;
 import com.uni.applicationwangone.data.model.jz_bean.ContentTextBean;
 import com.uni.applicationwangone.ui.fragments.BaseFragment;
 
+import java.util.ArrayList;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -22,9 +24,10 @@ public class ContentTextFragment extends BaseFragment {
     @Bind(R.id.txtvContent)
     TextView txtvContent;
     private View mRootView;
-    private ContentTextBean contentTextBean;
+    private ArrayList<ContentTextBean> contentTextBeanList;
+    private int itemPostion=0;
 
-    public static ContentTextFragment newInstance(ContentTextBean contentTextBean) {
+    public static ContentTextFragment newInstance(ArrayList<ContentTextBean> contentTextBean) {
         ContentTextFragment fragment = new ContentTextFragment();
         Bundle args = new Bundle();
         args.putSerializable(ContentTextBean.class.getSimpleName(),contentTextBean);
@@ -36,7 +39,7 @@ public class ContentTextFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            contentTextBean = (ContentTextBean)getArguments().getSerializable(ContentTextBean.class.getSimpleName());
+            contentTextBeanList = (ArrayList<ContentTextBean>)getArguments().getSerializable(ContentTextBean.class.getSimpleName());
         }
     }
 
@@ -52,10 +55,13 @@ public class ContentTextFragment extends BaseFragment {
     }
 
     public void bindData(){
-        if(contentTextBean!=null){
-            txtvContent.setText(contentTextBean.text);
-            if(contentTextBean.gravity == JzMenuMgr.Content_Gravity_Center){
-                txtvContent.setText(Gravity.CENTER_HORIZONTAL);
+        if(contentTextBeanList!=null){
+            ContentTextBean bean = contentTextBeanList.get(itemPostion);
+            txtvContent.setText(bean.text);
+            if(bean.gravity == JzMenuMgr.Content_Gravity_Center){
+                txtvContent.setGravity(Gravity.CENTER_HORIZONTAL);
+            }else{
+                txtvContent.setGravity(Gravity.LEFT);
             }
         }
     }

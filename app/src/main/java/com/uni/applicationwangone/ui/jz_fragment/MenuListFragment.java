@@ -151,7 +151,14 @@ public class MenuListFragment extends BaseFragment {
             ((JzMainActivity)getActivity()).transform(MenuListFragment.newInstance(menuInfo.value, JzMenuMgr.getMenuInfo(menuTitle,menuInfo.value)));
         }else if(menuInfo.childIsMenu == JzMenuMgr.Content_List){
             ((JzMainActivity)getActivity()).transform(ContentListFragment.newInstance(JzMenuMgr.getContentListInfo(menuTitle,menuInfo.value)));
+        }else if(menuInfo.childIsMenu == JzMenuMgr.Content_Text){
+            ((JzMainActivity)getActivity()).transform(ContentTextFragment.newInstance(JzMenuMgr.getContentTextInfo(menuTitle, menuInfo.value)));
+        }else if(menuInfo.childIsMenu == JzMenuMgr.Content_Tip){
+            ((JzMainActivity)getActivity()).transform(ContentTipFragment.newInstance(JzMenuMgr.getContentTipInfo(menuTitle, menuInfo.value)));
+        }else if(menuInfo.childIsMenu == JzMenuMgr.Content_Toast){
+            UIHelper.showToast(getActivity(),JzMenuMgr.getContentToastInfo(menuTitle, menuInfo.value).toast);
         }
+
         return super.confirm();
     }
 

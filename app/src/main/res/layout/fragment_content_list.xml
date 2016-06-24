@@ -20,8 +20,8 @@
         android:layout_height="match_parent"
         android:background="@android:color/transparent"
         android:layout_marginTop="8dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:scrollbars="none"
         android:divider="@null"
         ></ListView>

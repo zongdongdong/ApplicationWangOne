@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.uni.applicationwangone.R;
+import com.uni.applicationwangone.data.JzMenuMgr;
 import com.uni.applicationwangone.data.model.jz_bean.MenuInfo;
 import com.uni.applicationwangone.ui.fragments.BaseFragment;
 import com.uni.applicationwangone.ui.jz_fragment.MenuListFragment;
@@ -31,13 +32,14 @@ public class JzMainActivity extends BaseActivity {
 
     public  ArrayList<MenuInfo> getData(){
         ArrayList<MenuInfo> list = new ArrayList<>();
-        list.add(new MenuInfo("测值显示",true));
-        list.add(new MenuInfo("报告显示",true));
-        list.add(new MenuInfo("调试操作",true));
-        list.add(new MenuInfo("定值设置",true));
-        list.add(new MenuInfo("装置打印",true));
-        list.add(new MenuInfo("版本信息",true));
-        list.add(new MenuInfo("时间设置",true));
+        list.add(new MenuInfo("测值显示", JzMenuMgr.Menu_List));
+        list.add(new MenuInfo("报告显示",JzMenuMgr.Menu_List));
+        list.add(new MenuInfo("调试操作",JzMenuMgr.Menu_List));
+        list.add(new MenuInfo("定值设置",JzMenuMgr.Menu_List));
+        list.add(new MenuInfo("装置打印",JzMenuMgr.Menu_List));
+        list.add(new MenuInfo("版本信息",JzMenuMgr.Menu_List));
+        list.add(new MenuInfo("时间设置",JzMenuMgr.Menu_List));
+        list.add(new MenuInfo("报告清除",JzMenuMgr.Menu_List));
         return list;
     }
 

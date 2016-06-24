@@ -11,15 +11,12 @@ import java.util.ArrayList;
 
 import com.uni.applicationwangone.R;
 import com.uni.applicationwangone.data.JzMenuMgr;
+import com.uni.applicationwangone.data.model.jz_bean.ContentListInfoBean;
 import com.uni.applicationwangone.data.model.jz_bean.MenuInfo;
-import com.uni.applicationwangone.ui.activity.BaseActivity;
 import com.uni.applicationwangone.ui.activity.JzMainActivity;
-import com.uni.applicationwangone.ui.adapter.MenuListAdapter;
+import com.uni.applicationwangone.ui.adapter.jz.MenuListAdapter;
 import com.uni.applicationwangone.ui.fragments.BaseFragment;
 import com.uni.applicationwangone.ui.util.UIHelper;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -62,10 +59,12 @@ public class MenuListFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mRootView = inflater.inflate(R.layout.fragment_menu_list, container, false);
-        ButterKnife.bind(this, mRootView);
-        bindData();
-        setClickListeners();
+        if(mRootView==null){
+            mRootView = inflater.inflate(R.layout.fragment_menu_list, container, false);
+            ButterKnife.bind(this, mRootView);
+            bindData();
+            setClickListeners();
+        }
         return mRootView;
     }
 
@@ -97,34 +96,50 @@ public class MenuListFragment extends BaseFragment {
     @Override
     public void top() {
         super.top();
+
         int selectPostion = adapter.getSelectPosition();
         if(selectPostion == 0){
             return;
         }
-        if(selectPostion == currentFirstVisibleItem){
-//            UIHelper.showToast(getActivity(), "" + currentVsibleItemCount + "," + selectPostion + "," + (currentVsibleItemCount - selectPostion));
-            adapter.selectItem((selectPostion - 1));
-            if(selectPostion<currentVsibleItemCount){
-                lvMenu.setSelection(0);
-            }else{
-                lvMenu.setSelection(Math.abs(selectPostion - currentVsibleItemCount));
-            }
-        }else{
+        if(selectPostion<(currentVsibleItemCount-1)){
             selectPostion-=1;
             adapter.selectItem(selectPostion);
+            lvMenu.setSelection(0);
+        }else {
+//            UIHelper.showToast(getActivity(), "" + currentVsibleItemCount + "," + selectPostion + "," + (currentVsibleItemCount - selectPostion));
+            adapter.selectItem((selectPostion - 1));
+            lvMenu.setSelection((selectPostion - 1));
         }
+
+//
+//        int selectPostion = adapter.getSelectPosition();
+//        if(selectPostion == 0){
+//            return;
+//        }
+//        if(selectPostion == currentFirstVisibleItem){
+////            UIHelper.showToast(getActivity(), "" + currentVsibleItemCount + "," + selectPostion + "," + (currentVsibleItemCount - selectPostion));
+//            adapter.selectItem((selectPostion - 1));
+//            if(selectPostion<currentVsibleItemCount){
+//                lvMenu.setSelection(0);
+//            }else{
+//                lvMenu.setSelection(Math.abs(selectPostion - currentVsibleItemCount));
+//            }
+//        }else{
+//            selectPostion-=1;
+//            adapter.selectItem(selectPostion);
+//        }
     }
 
     @Override
     public void right() {
         super.right();
-        UIHelper.showToast(getActivity(), "right");
+//        UIHelper.showToast(getActivity(), "right");
     }
 
     @Override
     public void left() {
         super.left();
-        UIHelper.showToast(getActivity(), "left");
+//        UIHelper.showToast(getActivity(), "left");
     }
 
     @Override
@@ -132,8 +147,10 @@ public class MenuListFragment extends BaseFragment {
 //        UIHelper.showToast(getActivity(),"confirm");
         int selectPostion = adapter.getSelectPosition();
         MenuInfo menuInfo = (MenuInfo)adapter.getItem(selectPostion);
-        if(menuInfo.childIsMenu){
+        if(menuInfo.childIsMenu == JzMenuMgr.Menu_List){
             ((JzMainActivity)getActivity()).transform(MenuListFragment.newInstance(menuInfo.value, JzMenuMgr.getMenuInfo(menuTitle,menuInfo.value)));
+        }else if(menuInfo.childIsMenu == JzMenuMgr.Content_List){
+            ((JzMainActivity)getActivity()).transform(ContentListFragment.newInstance(JzMenuMgr.getContentListInfo(menuTitle,menuInfo.value)));
         }
         return super.confirm();
     }
@@ -145,7 +162,7 @@ public class MenuListFragment extends BaseFragment {
         if(selectPostion == (currentTotalItemCount-1)){
             return;
         }
-        if((selectPostion+1)==(currentFirstVisibleItem+currentVsibleItemCount)){
+        if((selectPostion+1)==(currentFirstVisibleItem+currentVsibleItemCount-1)){
             selectPostion+=1;
             if(selectPostion<adapter.getCount()){
                 adapter.selectItem(selectPostion);

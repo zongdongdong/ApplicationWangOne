@@ -1,4 +1,4 @@
-package com.uni.applicationwangone.ui.adapter;
+package com.uni.applicationwangone.ui.adapter.jz;
 
 import android.content.Context;
 import android.view.LayoutInflater;

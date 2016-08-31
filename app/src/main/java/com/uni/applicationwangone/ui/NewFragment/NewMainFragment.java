@@ -1,5 +1,6 @@
 package com.uni.applicationwangone.ui.NewFragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import com.squareup.okhttp.Response;
 import com.uni.applicationwangone.R;
 import com.uni.applicationwangone.ui.AppConstant;
 import com.uni.applicationwangone.ui.activity.NewMainActivity;
+import com.uni.applicationwangone.ui.common.LoginActivity;
 import com.uni.applicationwangone.ui.fragments.BaseFragment;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
@@ -54,7 +56,8 @@ public class NewMainFragment extends BaseFragment {
                 ((NewMainActivity)getActivity()).goReferenceSystem();
                 break;
             case R.id.btnRead:
-                ((NewMainActivity)getActivity()).goRead();
+                startActivity(new Intent(getActivity(), LoginActivity.class));
+//                ((NewMainActivity)getActivity()).goRead();
                 break;
             case R.id.btnMethod:
                 ((NewMainActivity)getActivity()).goBackendMethod();

@@ -15,4 +15,5 @@
     <color name="gray_actionbar_bg">#edecec</color>
     <color name="light_black">#3e3e3e</color>
     <color name="light_dark_gray">#898787</color>
+    <color name="actionBarLine">#f7f7f7</color>
 </resources>

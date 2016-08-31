@@ -30,8 +30,14 @@
         <activity
             android:name=".ui.activity.BaseActivity"
             android:theme="@style/noActionBarTheme" />
-        <activity android:name=".ui.activity.JzMainActivity"
-            android:screenOrientation="landscape"
+        <activity
+            android:name=".ui.activity.JzMainActivity"
+            android:screenOrientation="landscape" />
+        <activity android:name=".ui.common.LoginActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".ui.common.RegisterActivity"
+            android:screenOrientation="portrait"
             ></activity>
     </application>
 
